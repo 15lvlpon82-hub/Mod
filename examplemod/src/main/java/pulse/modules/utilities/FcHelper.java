@@ -1,0 +1,2256 @@
+package pulse;
+
+
+
+import pulse.module.ClientModule;
+import pulse.FriendLookup;
+import pulse.module.ModuleInfo;
+import pulse.module.ModuleCategory;
+import pulse.settings.BooleanSetting;
+import java.util.List;
+import java.util.function.Predicate;
+import meteordevelopment.orbit.EventHandler;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
+
+@ModuleInfo(a = "FC Helper", b = "Предпросмотр зоны действия донат-предметов", c = ModuleCategory.UTILITIES)
+public class FcHelper extends ClientModule {
+   private final BooleanSetting e;
+   private final BooleanSetting f;
+   private final BooleanSetting g;
+   private final BooleanSetting h;
+   private final BooleanSetting i;
+   private final BooleanSetting j;
+   public static int a;
+   public static boolean b;
+
+   public FcHelper() {
+      int var10003 = (int)-1285407985078962103L;
+      int var2 = -1496886799;
+      int var1 = var10003;
+      var10003 = var1 + var2 - 2 * (var1 & var2);
+      var2 = 663584581;
+      var1 = var10003;
+      var10003 = ((var1 | var2) - (var1 & var2)) * ((var1 | var2) - (var1 & var2));
+      var2 = -476817505;
+      var1 = -528049312;
+      int var10004 = (var1 | var2) - (var1 & var2);
+      var2 = 1227919929;
+      var1 = var10004;
+      var10004 = (var1 | var2) - (var1 & var2);
+      int var10005 = (int)943055503487662420L;
+      var2 = -1924452768;
+      var1 = var10005;
+      var10005 = var1 + var2 - 2 * (var1 & var2);
+      var2 = 1167979038;
+      var1 = var10005;
+      var2 = (var1 | var2) - (var1 & var2);
+      var1 = var10004;
+      var10004 = (var1 | var2) + (var1 & var2);
+      var10005 = (int)-5971804086179251418L;
+      var2 = 1412119349;
+      var1 = var10005;
+      var10005 = (var1 | var2) - (var1 & var2);
+      var2 = -287280745;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      int var10006 = (int)4252648153536101096L;
+      var2 = -2133120870;
+      var1 = var10006;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      var2 = -1754761816;
+      var1 = var10006;
+      var2 = var1 + var2 - 2 * (var1 & var2);
+      var1 = var10005;
+      var10005 = 2 * (var1 | var2) - (var1 ^ var2);
+      var10005 = (int)-45834491101351228L;
+      var2 = -1521264534;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var2 = 288888260;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var10006 = (int)324759508308285103L;
+      var2 = -1496876100;
+      var1 = var10006;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      var2 = 1013625338;
+      var1 = var10006;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = 430997000;
+      var1 = 1788955849;
+      int var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 451235051;
+      var1 = var10007;
+      var2 = (var1 | var2) & (~var1 | ~var2);
+      var1 = var10006;
+      var10006 = (var1 ^ var2) + 2 * (var1 & var2);
+      var2 = 1290801608;
+      var1 = 333812233;
+      var10006 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1735147330;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = -1535036859;
+      var1 = -960760000;
+      int var10008 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 1648018708;
+      var1 = var10008;
+      var10008 = var1 & ~var2 | ~var1 & var2;
+      var10008 = (int)6639227554044636485L;
+      var2 = -1125246601;
+      var1 = var10008;
+      var10008 = (var1 | var2) - (var1 & var2);
+      var2 = 2034168884;
+      var1 = var10008;
+      var10008 = (var1 | var2) - (var1 & var2);
+      var2 = 447284376;
+      var1 = 1856810334;
+      var10007 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1700076250;
+      var1 = var10007;
+      var10007 = (var1 | var2) & ~(var1 & var2);
+      var10008 = (int)2391586972470183317L;
+      var2 = -2086819103;
+      var1 = var10008;
+      var10008 = var1 & ~var2 | ~var1 & var2;
+      var2 = -899354361;
+      var1 = var10008;
+      var10008 = var1 & ~var2 | ~var1 & var2;
+      var10008 = (int)5115034540827387382L;
+      var2 = -2012271109;
+      var1 = var10008;
+      var10008 = (var1 | var2) - (var1 & var2);
+      var2 = -69236306;
+      var1 = var10008;
+      String var333 = c(
+         "㤰ߡ㥘߯㤪ߡ㥗ϱ㤤߯㤣߬㤠ޞ", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, (var1 | var2) - (var1 & var2)
+      );
+      var10004 = (int)1875885346771712258L;
+      var2 = -1381217802;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 404517109;
+      var1 = var10004;
+      this.e = new BooleanSetting(var333, pulse.Bool.from(var1 & (var2 ^ -1) | (var1 ^ -1) & var2));
+      String var334 = "bpa";
+      String var350 = "bpb";
+      var2 = -1525474071;
+      var1 = 2102612971;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var2 = -2095814771;
+      var1 = var10005;
+      var10005 = (var1 | var2) & ~(var1 & var2);
+      var2 = 220026564;
+      var1 = -1917344857;
+      var10005 = (var1 | var2) - (var1 & var2);
+      var2 = -609170935;
+      var1 = var10005;
+      var10005 = (var1 | var2) & (~var1 | ~var2);
+      var10006 = (int)-5967226632093265504L;
+      var2 = -1294629415;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = 1689612402;
+      var1 = var10006;
+      var10006 = (var1 | var2) & (~var1 | ~var2);
+      var10006 = (int)3046332101116028787L;
+      var2 = -586729262;
+      var1 = var10006;
+      var10006 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -129656388;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = 432505261;
+      var1 = 690267503;
+      var10007 = var1 + var2 - 2 * (var1 & var2);
+      var2 = 1490665711;
+      var1 = var10007;
+      var10007 = (var1 | var2) & ~(var1 & var2);
+      var2 = 370128982;
+      var1 = -2096599059;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1915313014;
+      var1 = var10007;
+      var10007 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1012432157;
+      var1 = 1427212704;
+      var10008 = (var1 | var2) & ~(var1 & var2);
+      var2 = -127509398;
+      var1 = var10008;
+      var10008 = var1 & ~var2 | ~var1 & var2;
+      var10008 = (int)8027761551180568268L;
+      var2 = 436933023;
+      var1 = var10008;
+      var10008 = (var1 | var2) - (var1 & var2);
+      var2 = 361366290;
+      var1 = var10008;
+      String var335 = c("㤂ȍ㤤ؓ㥙Ȉ㤠Ȅ㤠", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, (var1 | var2) & (~var1 | ~var2));
+      var10004 = (int)-8162174229887435940L;
+      var2 = 1411735673;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 613636900;
+      var1 = var10004;
+      this.f = new BooleanSetting(var335, pulse.Bool.from((var1 | var2) & (var1 & var2 ^ -1)));
+      String var336 = "bpc";
+      var2 = 709968430;
+      var1 = -1358679745;
+      var10004 = var1 & ~var2 | ~var1 & var2;
+      var2 = -977502048;
+      var1 = var10004;
+      var10004 = ((var1 | var2) & ~(var1 & var2)) * ((var1 | var2) & ~(var1 & var2));
+      String var390 = "bpd";
+      var10005 = (int)-5511989600606903924L;
+      var2 = 1990219619;
+      var1 = var10005;
+      var10005 = (var1 | var2) - (var1 & var2);
+      var2 = 1469565317;
+      var1 = var10005;
+      var10005 = (var1 | var2) - (var1 & var2);
+      var10006 = (int)-2158276454823008403L;
+      var2 = -2011705959;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = -1655372977;
+      var1 = var10006;
+      var10006 = (var1 | var2) & (~var1 | ~var2);
+      var10007 = (int)5777683634571844927L;
+      var2 = 876837005;
+      var1 = var10007;
+      var10007 = (var1 | var2) - (var1 & var2);
+      var2 = -1453919233;
+      var1 = var10007;
+      var2 = (var1 | var2) & (~var1 | ~var2);
+      var1 = var10006;
+      var10006 = (var1 & ~var2) + (var2 & ~var1) + 2 * (var1 & var2);
+      var10006 = (int)-6975450530236012985L;
+      var2 = -430048889;
+      var1 = var10006;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1708855726;
+      var1 = var10006;
+      var10006 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 894357812;
+      var1 = -1587621310;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 854291675;
+      var1 = var10007;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var10008 = (int)-1029900946746984172L;
+      var2 = 1349584167;
+      var1 = var10008;
+      var10008 = (var1 | var2) & ~(var1 & var2);
+      var2 = -1719295467;
+      var1 = var10008;
+      var2 = (var1 | var2) & (~var1 | ~var2);
+      var1 = var10007;
+      var10007 = (var1 | var2) + (var1 & var2);
+      var2 = -204777176;
+      var1 = 1464632022;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1458184184;
+      var1 = var10007;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      int var10009 = (int)5049094162248927699L;
+      var2 = 445053886;
+      var1 = var10009;
+      var10009 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -1327598993;
+      var1 = var10009;
+      var10009 = (var1 | var2) & ~(var1 & var2);
+      var10008 = (int)675780236028375674L;
+      var2 = -614647261;
+      var1 = var10008;
+      var10008 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -1981053749;
+      var1 = var10008;
+      String var337 = c(
+         "㤿쫕㥘쫕㤧쫐㥐쫘㤡컀㤯쫐㥝쫒㤨쪢", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, (var1 | var2) - (var1 & var2)
+      );
+      var2 = -960485362;
+      var1 = -1068429117;
+      var10004 = (var1 | var2) & ~(var1 & var2);
+      var2 = 110180556;
+      var1 = var10004;
+      this.g = new BooleanSetting(var337, pulse.Bool.from((var1 | var2) & (var1 & var2 ^ -1)));
+      var2 = -40928198;
+      var1 = -597586026;
+      var10003 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1299706802;
+      var1 = var10003;
+      var10003 = var1 + var2 - 2 * (var1 & var2);
+      var10004 = (int)1714249133702141260L;
+      var2 = -1981263626;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1246399171;
+      var1 = var10004;
+      var2 = var1 & ~var2 | ~var1 & var2;
+      var1 = var10003;
+      var10003 = (var1 & ~var2) + (var2 & ~var1) + 2 * (var1 & var2);
+      var2 = 481259163;
+      var1 = -1154172114;
+      var10004 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -1097612359;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 893619669;
+      var1 = 647000421;
+      var10005 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -1506394996;
+      var1 = var10005;
+      var2 = var1 & ~var2 | ~var1 & var2;
+      var1 = var10004;
+      var10004 = (var1 | var2) + (var1 & var2);
+      var2 = -751461487;
+      var1 = -334976638;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var2 = 549096772;
+      var1 = var10005;
+      var10005 = var1 + var2 - 2 * (var1 & var2);
+      var10005 = (int)6805197137825524761L;
+      var2 = -1222786606;
+      var1 = var10005;
+      var10005 = (var1 | var2) & ~(var1 & var2);
+      var2 = 647991969;
+      var1 = var10005;
+      var10005 = (var1 | var2) & ~(var1 & var2);
+      var2 = 1818117389;
+      var1 = -1446267355;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -980028633;
+      var1 = var10007;
+      var10007 = (var1 | var2) - (var1 & var2);
+      var10007 = (int)3650502356552249404L;
+      var2 = -554805386;
+      var1 = var10007;
+      var10007 = (var1 | var2) - (var1 & var2);
+      var2 = -1997822144;
+      var1 = var10007;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var10006 = (int)8629844004606806069L;
+      var2 = -2018233916;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = 2040468094;
+      var1 = var10006;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      String var466 = "bpe";
+      var2 = -1892163666;
+      var1 = -481226767;
+      var10007 = (var1 | var2) & ~(var1 & var2);
+      var2 = 2137698566;
+      var1 = var10007;
+      var10007 = var1 + var2 - 2 * (var1 & var2);
+      var10009 = (int)-3246302516312874874L;
+      var2 = 643180773;
+      var1 = var10009;
+      var10009 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -2015311767;
+      var1 = var10009;
+      var10009 = (var1 | var2) & ~(var1 & var2);
+      var2 = -1678359592;
+      var1 = 1458319720;
+      var10009 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -853904716;
+      var1 = var10009;
+      var10009 = (var1 | var2) & (~var1 | ~var2);
+      var10009 = (int)-6536765557267103703L;
+      var2 = -232676740;
+      var1 = var10009;
+      var10009 = (var1 | var2) - (var1 & var2);
+      var2 = 288858710;
+      var1 = var10009;
+      var10009 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -353292074;
+      var1 = 394006986;
+      var10008 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -38713169;
+      var1 = var10008;
+      String var341 = c(
+         "㤇濱㥛澃㤠濼㤨毡㥙澂㤬澍㤩澊", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, var1 + var2 - 2 * (var1 & var2)
+      );
+      var2 = 454076970;
+      var1 = -734111876;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -819004073;
+      var1 = var10004;
+      this.h = new BooleanSetting(var341, pulse.Bool.from(var1 + var2 - 2 * (var1 & var2)));
+      var2 = -1069567653;
+      var1 = -888022568;
+      var10003 = (var1 | var2) - (var1 & var2);
+      var2 = -532228827;
+      var1 = var10003;
+      var10003 = ((var1 | var2) & (~var1 | ~var2)) * ((var1 | var2) & (~var1 | ~var2));
+      String var362 = "bpf";
+      String var400 = "bpg";
+      var10005 = (int)-7050380709300798943L;
+      var2 = -1826446248;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var2 = -1159503597;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var10006 = (int)8374516096757326687L;
+      var2 = -1308212687;
+      var1 = var10006;
+      var10006 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1617796033;
+      var1 = var10006;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = -599824602;
+      var1 = -2001644118;
+      var10007 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -2034638236;
+      var1 = var10007;
+      var2 = var1 + var2 - 2 * (var1 & var2);
+      var1 = var10006;
+      var10006 = (var1 | var2) + (var1 & var2);
+      var2 = 1186188432;
+      var1 = -364945390;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      var2 = 1798993154;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var10007 = (int)8034151705013018494L;
+      var2 = 148257498;
+      var1 = var10007;
+      var10007 = (var1 | var2) & ~(var1 & var2);
+      var2 = 466260137;
+      var1 = var10007;
+      var10007 = var1 + var2 - 2 * (var1 & var2);
+      var2 = 249581750;
+      var1 = -1606911394;
+      var10007 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1505929319;
+      var1 = var10007;
+      var10007 = var1 & ~var2 | ~var1 & var2;
+      String var497 = "bph";
+      var2 = -572405391;
+      var1 = 1292493122;
+      var10008 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1864974441;
+      var1 = var10008;
+      String var344 = c("㤹醔㤨釫", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, (var1 | var2) & (~var1 | ~var2));
+      var2 = 313266121;
+      var1 = -194178403;
+      var10004 = var1 & ~var2 | ~var1 & var2;
+      var2 = -423551659;
+      var1 = var10004;
+      this.i = new BooleanSetting(var344, pulse.Bool.from(var1 & (var2 ^ -1) | (var1 ^ -1) & var2));
+      var10004 = (int)6649326435327297484L;
+      var2 = 97633100;
+      var1 = var10004;
+      var10004 = (var1 | var2) - (var1 & var2);
+      var2 = -929201006;
+      var1 = var10004;
+      var10004 = (var1 | var2) & ~(var1 & var2);
+      var2 = -1812154509;
+      var1 = -856535631;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = 1594817231;
+      var1 = var10004;
+      var10004 = (var1 | var2) - (var1 & var2);
+      var10004 = (int)-679502467815664538L;
+      var2 = -339871925;
+      var1 = var10004;
+      var10004 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -429563096;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var10004 = (int)5089513807395604459L;
+      var2 = 974452373;
+      var1 = var10004;
+      var10004 = var1 & ~var2 | ~var1 & var2;
+      var2 = -1823067788;
+      var1 = var10004;
+      var10004 = (var1 | var2) & ~(var1 & var2);
+      var2 = 863254257;
+      var1 = -1465720594;
+      var10004 = (var1 | var2) & ~(var1 & var2);
+      var2 = 643866689;
+      var1 = var10004;
+      var10004 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1019914570;
+      var1 = 553410921;
+      var10006 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -473352227;
+      var1 = var10006;
+      var10006 = var1 + var2 - 2 * (var1 & var2);
+      var2 = 134757876;
+      var1 = 579505899;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = 713208599;
+      var1 = var10006;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = 779224186;
+      var1 = -608847612;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = -171459207;
+      var1 = var10006;
+      var10006 = (var1 | var2) - (var1 & var2);
+      var2 = -1801446112;
+      var1 = 1449095333;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var2 = -1713024273;
+      var1 = var10005;
+      var10005 = var1 & ~var2 | ~var1 & var2;
+      var10006 = (int)5444157082075371468L;
+      var2 = -1699432650;
+      var1 = var10006;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      var2 = -1800018837;
+      var1 = var10006;
+      var10006 = var1 + var2 - 2 * (var1 & var2);
+      var10007 = (int)626280182623172677L;
+      var2 = 1594639574;
+      var1 = var10007;
+      var10007 = (var1 | var2) & ~(var1 & var2);
+      var2 = 830104223;
+      var1 = var10007;
+      var2 = (var1 | var2) - (var1 & var2);
+      var1 = var10006;
+      var10006 = (var1 & ~var2) + (var2 & ~var1) + 2 * (var1 & var2);
+      var10006 = (int)3570192720589116292L;
+      var2 = -861438974;
+      var1 = var10006;
+      var10006 = (var1 | var2) & ~(var1 & var2);
+      var2 = 292413251;
+      var1 = var10006;
+      var10006 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1222654637;
+      var1 = 1782949119;
+      var10008 = (var1 | var2) & ~(var1 & var2);
+      var2 = 581279299;
+      var1 = var10008;
+      var10008 = var1 + var2 - 2 * (var1 & var2);
+      var10008 = (int)-1258159765103805884L;
+      var2 = -74602944;
+      var1 = var10008;
+      var10008 = (var1 | var2) - (var1 & var2);
+      var2 = -373171199;
+      var1 = var10008;
+      var10008 = (var1 | var2) & (~var1 | ~var2);
+      var2 = -1083240288;
+      var1 = 1149579333;
+      var10007 = var1 & ~var2 | ~var1 & var2;
+      var2 = -129367071;
+      var1 = var10007;
+      var10007 = (var1 | var2) - (var1 & var2);
+      var10009 = (int)-5417393392553463843L;
+      var2 = 962478648;
+      var1 = var10009;
+      var10009 = (var1 | var2) & ~(var1 & var2);
+      var2 = 1158884853;
+      var1 = var10009;
+      var10009 = var1 & ~var2 | ~var1 & var2;
+      var10009 = (int)-5047822392238659189L;
+      var2 = 450611411;
+      var1 = var10009;
+      var10009 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1199694155;
+      var1 = var10009;
+      var10009 = var1 & ~var2 | ~var1 & var2;
+      var10008 = (int)2300530194475075548L;
+      var2 = 1361532280;
+      var1 = var10008;
+      var10008 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -1112753075;
+      var1 = var10008;
+      String var345 = c(
+         "㤄ꢫ㤫ꢦ㤠꣙㤥꣐㤡겻㥐ꢫ㥘", "`ꟳꓺꁡꤐ絺蹙⑿譸㑺}\ua7e2꒠ꁽ꤀紹蹃⑷謧㑻=ꟳ꒡ꁸ꤉絿蹞⑳謲㑤=Ꟁ꒖ꁙ꤀絺蹚⑿謥㑚}\ua7e2꒠ꁽ꤀", var10005, var10006, var10007, var1 + var2 - 2 * (var1 & var2)
+      );
+      var2 = 1887014012;
+      var1 = 76985333;
+      var10004 = var1 & ~var2 | ~var1 & var2;
+      var2 = 1961836424;
+      var1 = var10004;
+      this.j = new BooleanSetting(var345, pulse.Bool.from(var1 + var2 - 2 * (var1 & var2)));
+   }
+
+   @EventHandler
+   public void a(WorldRenderEvent var1) {
+      if (c.world != null && c.player != null) {
+         MatrixStack var2 = var1.a();
+         float var3 = var1.b();
+         Item var4 = c.player.getMainHandStack().getItem();
+         Item var5 = c.player.getOffHandStack().getItem();
+         if (this.e.k()) {
+            if (var4 == Items.NETHER_STAR || var5 == Items.NETHER_STAR) {
+               this.a(var2, var3);
+            } else if (a != a) {
+               int var10000 = (int)-4660714593034528527L;
+               int var9 = -1750784051;
+               int var8 = var10000;
+               var10000 = (var8 | var9) & (~var8 | ~var9);
+               var9 = -48775364;
+               var8 = var10000;
+               var10000 = var8 + var9 - 2 * (var8 & var9);
+               int var10001 = (int)-4258331984480432707L;
+               var9 = -378279606;
+               var8 = var10001;
+               var10001 = (var8 | var9) & (~var8 | ~var9);
+               var9 = -1070603017;
+               var8 = var10001;
+               var10000 /= var8 & ~var9 | ~var8 & var9;
+            }
+         }
+
+         if (this.f.k()) {
+            if (var4 != Items.SLIME_BALL && var5 != Items.SLIME_BALL) {
+               if (b) {
+                  throw new RuntimeException();
+               }
+            } else {
+               this.b(var2, var3);
+            }
+         }
+
+         if (!this.g.k()) {
+            if (a != a) {
+               throw new RuntimeException();
+            }
+         } else {
+            label81: {
+               if (var4 == Items.TURTLE_SCUTE) {
+                  int var44 = -255222524;
+                  int var15 = 1734202201;
+                  int var92 = (var15 | var44) & (~var15 | ~var44);
+                  var44 = -1751888306;
+                  var15 = var92;
+                  var92 = var15 + var44 - 2 * (var15 & var44);
+                  var44 = 320584424;
+                  var15 = -581349955;
+                  var92 = (var15 | var44) & ~(var15 & var44);
+                  var44 = -834472105;
+                  var15 = var92;
+                  var92 = (var15 | var44) & ~(var15 & var44);
+                  var44 = -520523804;
+                  var15 = 262607059;
+                  int var73 = (var15 | var44) & ~(var15 & var44);
+                  var44 = -97783311;
+                  var15 = var73;
+                  int var7 = (var15 | var44) - (var15 & var44);
+                  a = var7;
+                  String var74 = "bpi";
+                  var73 = (int)24993788441700019L;
+                  var44 = 1661609758;
+                  var15 = var73;
+                  var73 = var15 & ~var44 | ~var15 & var44;
+                  var44 = -1392666745;
+                  var15 = var73;
+                  if (var15 + var44 - 2 * (var15 & var44) <= a) {
+                     var44 = -1914576890;
+                     var15 = 504285192;
+                     var73 = var15 + var44 - 2 * (var15 & var44);
+                     var44 = -785037446;
+                     var15 = var73;
+                     var73 = var15 + var44 - 2 * (var15 & var44);
+                     var92 = (int)8326891349301106270L;
+                     var44 = -1550905841;
+                     var15 = var92;
+                     var92 = var15 + var44 - 2 * (var15 & var44);
+                     var44 = 892312887;
+                     var15 = var92;
+                     var44 = (var15 | var44) - (var15 & var44);
+                     var15 = var73;
+                     var73 = 2 * (var15 | var44) - (var15 ^ var44);
+                     var73 = (int)9050071140744796272L;
+                     var44 = -1791886882;
+                     var15 = var73;
+                     var73 = var15 & ~var44 | ~var15 & var44;
+                     var44 = -43605408;
+                     var15 = var73;
+                     var7 = var15 + var44 - 2 * (var15 & var44);
+                  }
+               } else if (var5 != Items.TURTLE_SCUTE) {
+                  break label81;
+               }
+
+               this.a(var2);
+            }
+         }
+
+         if (this.h.k()) {
+            if (var4 != Items.COBWEB && var5 != Items.COBWEB) {
+               int var59 = -1954805235;
+               int var30 = 1723973496;
+               int var82 = (var30 | var59) & ~(var30 & var59);
+               var59 = 1348304092;
+               var30 = var82;
+               var82 = (var30 | var59) & (~var30 | ~var59);
+               var59 = 612690983;
+               var30 = 590222070;
+               int var98 = var30 & ~var59 | ~var30 & var59;
+               var59 = 212244232;
+               var30 = var98;
+               var59 = (var30 | var59) & ~(var30 & var59);
+               var30 = var82;
+               var82 = var30 - ~var59 - 1;
+               var82 = (int)-4592950799579040116L;
+               var59 = -1909099051;
+               var30 = var82;
+               var82 = (var30 | var59) & (~var30 | ~var59);
+               var59 = -1323358170;
+               var30 = var82;
+               int var11 = var30 & ~var59 | ~var30 & var59;
+               a = var11;
+               var82 = (int)-7166835235873802810L;
+               var59 = -550403925;
+               var30 = var82;
+               var82 = var30 + var59 - 2 * (var30 & var59);
+               var59 = -358673364;
+               var30 = var82;
+               var82 = (var30 | var59) & ~(var30 & var59);
+               var59 = -112393340;
+               var30 = -417040718;
+               var82 = var30 + var59 - 2 * (var30 & var59);
+               var59 = 1883214234;
+               var30 = var82;
+               if (var30 + var59 - 2 * (var30 & var59) <= a) {
+                  throw new ExceptionInInitializerError();
+               }
+            } else {
+               this.b(var2);
+            }
+         }
+
+         if (this.i.k() && (var4 == Items.ENDER_EYE || var5 == Items.ENDER_EYE)) {
+            this.c(var2, var3);
+         }
+
+         if (this.j.k() && (var4 == Items.FIREWORK_STAR || var5 == Items.FIREWORK_STAR)) {
+            this.d(var2, var3);
+         }
+      }
+   }
+
+   private void a(MatrixStack var1, float var2) {
+      Vec3d var3 = this.a(var2);
+      double var10002 = var3.x;
+      int var10004 = (int)4423129821930724653L;
+      int var7 = -958128084;
+      int var6 = var10004;
+      var10004 = (var6 | var7) - (var6 & var7);
+      var7 = -1585824511;
+      var6 = var10004;
+      var10004 = var6 + var7 - 2 * (var6 & var7);
+      var10004 = (int)9137569801040876325L;
+      var7 = 1495041036;
+      var6 = var10004;
+      var10004 = var6 + var7 - 2 * (var6 & var7);
+      var7 = 1820088098;
+      var6 = var10004;
+      var10004 = (var6 | var7) - (var6 & var7);
+      var10002 -= 10.0;
+      var10004 = (int)3357503084462294947L;
+      var7 = 1190725204;
+      var6 = var10004;
+      var10004 = var6 + var7 - 2 * (var6 & var7);
+      var7 = -1354776410;
+      var6 = var10004;
+      var10004 = (var6 | var7) - (var6 & var7);
+      int var10005 = (int)244474312523283244L;
+      var7 = -985068290;
+      var6 = var10005;
+      var10005 = (var6 | var7) & ~(var6 & var7);
+      var7 = -977079565;
+      var6 = var10005;
+      var7 = var6 + var7 - 2 * (var6 & var7);
+      var6 = var10004;
+      var10004 = 2 * (var6 | var7) - (var6 ^ var7);
+      double var10003 = var3.y - 10.0;
+      double var96 = var3.z;
+      int var10006 = (int)-4525563769375815863L;
+      var7 = -109234927;
+      var6 = var10006;
+      var10006 = (var6 | var7) - (var6 & var7);
+      var7 = 1418146394;
+      var6 = var10006;
+      var10006 = (var6 | var7) & (~var6 | ~var7);
+      var10006 = (int)-8616910966832174633L;
+      var7 = -1141487055;
+      var6 = var10006;
+      var10006 = var6 & ~var7 | ~var6 & var7;
+      var7 = -214260768;
+      var6 = var10006;
+      var10006 = (var6 | var7) & ~(var6 & var7);
+      double var97 = var96 - 10.0;
+      var10006 = (int)-8542369679377132227L;
+      var7 = 2041726947;
+      var6 = var10006;
+      var10006 = var6 + var7 - 2 * (var6 & var7);
+      var7 = -211631698;
+      var6 = var10006;
+      var10006 = (var6 | var7) & ~(var6 & var7);
+      int var10007 = (int)6340377767510681066L;
+      var7 = -656593621;
+      var6 = var10007;
+      var10007 = (var6 | var7) - (var6 & var7);
+      var7 = -1793082105;
+      var6 = var10007;
+      var7 = var6 & ~var7 | ~var6 & var7;
+      var6 = var10006;
+      var10006 = 2 * (var6 | var7) - (var6 ^ var7);
+      double var99 = var3.x + 10.0;
+      double var109 = var3.y;
+      int var10008 = (int)1916705882906880354L;
+      var7 = -1270776340;
+      var6 = var10008;
+      var10008 = (var6 | var7) & (~var6 | ~var7);
+      var7 = -573467505;
+      var6 = var10008;
+      var10008 = var6 + var7 - 2 * (var6 & var7);
+      var7 = 1692190456;
+      var6 = -185874007;
+      var10008 = (var6 | var7) - (var6 & var7);
+      var7 = -1875439777;
+      var6 = var10008;
+      var10008 = (var6 | var7) & ~(var6 & var7);
+      var10008 = (int)-4802784906684128940L;
+      var7 = 467391285;
+      var6 = var10008;
+      var10008 = (var6 | var7) & (~var6 | ~var7);
+      var7 = -1012403610;
+      var6 = var10008;
+      var10008 = (var6 | var7) & (~var6 | ~var7);
+      double var110 = var109 + 10.0;
+      double var112 = var3.z;
+      var7 = 832267446;
+      var6 = 911221457;
+      int var10009 = var6 + var7 - 2 * (var6 & var7);
+      var7 = 130762349;
+      var6 = var10009;
+      var10009 = (var6 | var7) & (~var6 | ~var7);
+      var7 = -1087971678;
+      var6 = 2110471945;
+      var10009 = (var6 | var7) & ~(var6 & var7);
+      var7 = -1024597594;
+      var6 = var10009;
+      var10009 = var6 & ~var7 | ~var6 & var7;
+      Box var4 = new Box(var10002, var10003, var97, var99, var110, var112 + 10.0);
+      int var80;
+      if (!this.a(var4)) {
+         var7 = -1237070146;
+         var6 = -1297225075;
+         var80 = (var6 | var7) & (~var6 | ~var7);
+         var7 = -82715700;
+         var6 = var80;
+         var80 = var6 & ~var7 | ~var6 & var7;
+      } else {
+         var7 = 726361811;
+         var6 = 1430864312;
+         var80 = (var6 | var7) - (var6 & var7);
+         var7 = 48871312;
+         var6 = var80;
+         var80 = var6 + var7 - 2 * (var6 & var7);
+         int var10001 = (int)994187728521512558L;
+         var7 = -1211349425;
+         var6 = var10001;
+         var10001 = (var6 | var7) & ~(var6 & var7);
+         var7 = -377377121;
+         var6 = var10001;
+         var7 = (var6 | var7) & (~var6 | ~var7);
+         var6 = var80;
+         var80 = (var6 ^ var7) + 2 * (var6 & var7);
+         var7 = -1807589927;
+         var6 = 1581191549;
+         var80 = var6 + var7 - 2 * (var6 & var7);
+         var7 = 897430436;
+         var6 = var80;
+         var80 = var6 & ~var7 | ~var6 & var7;
+      }
+
+      int var5 = var80;
+      WorldRenderUtils.a(var1, var4, var5);
+   }
+
+   private void b(MatrixStack var1, float var2) {
+      Vec3d var3 = this.a(var2);
+      double var4 = var3.y + 1.0;
+      int var10 = -1726162953;
+      int var9 = -992470517;
+      int var10003 = (var9 | var10) & ~(var9 & var10);
+      var10 = 1585188661;
+      var9 = var10003;
+      var10003 = (var9 | var10) & ~(var9 & var10);
+      int var10004 = (int)8915436338073205573L;
+      var10 = 1092028736;
+      var9 = var10004;
+      var10004 = (var9 | var10) & ~(var9 & var10);
+      var10 = 1813342407;
+      var9 = var10004;
+      var10 = (var9 | var10) - (var9 & var10);
+      var9 = var10003;
+      var10003 = var9 - ~var10 - 1;
+      double var10002 = var3.x - 5.0;
+      int var10005 = (int)-2896797439449493915L;
+      var10 = 1296833182;
+      var9 = var10005;
+      var10005 = var9 & ~var10 | ~var9 & var10;
+      var10 = -1347226308;
+      var9 = var10005;
+      var10005 = var9 + var10 - 2 * (var9 & var10);
+      int var10006 = (int)146049416784419185L;
+      var10 = 1293556863;
+      var9 = var10006;
+      var10006 = var9 & ~var10 | ~var9 & var10;
+      var10 = 1202994003;
+      var9 = var10006;
+      var10 = (var9 | var10) & (~var9 | ~var10);
+      var9 = var10005;
+      var10005 = (var9 ^ var10) + 2 * (var9 & var10);
+      double var96 = var3.z - 5.0;
+      var10 = -1708525947;
+      var9 = -1172005148;
+      var10006 = var9 & ~var10 | ~var9 & var10;
+      var10 = -192884743;
+      var9 = var10006;
+      var10006 = var9 + var10 - 2 * (var9 & var10);
+      double var104 = var3.x + 5.0;
+      int var10008 = (int)-2608953654944700770L;
+      var10 = 1968334828;
+      var9 = var10008;
+      var10008 = (var9 | var10) & (~var9 | ~var10);
+      var10 = 1048799171;
+      var9 = var10008;
+      var10008 = var9 & ~var10 | ~var9 & var10;
+      var10 = -1778096303;
+      var9 = -233005962;
+      int var10009 = var9 & ~var10 | ~var9 & var10;
+      var10 = 533532646;
+      var9 = var10009;
+      var10 = var9 & ~var10 | ~var9 & var10;
+      var9 = var10008;
+      var10008 = (var9 ^ var10) + 2 * (var9 & var10);
+      Box var6 = new Box(var10002, var4, var96, var104, var4, var3.z + 5.0);
+      var10003 = (int)-8112148756689394136L;
+      var10 = -587063812;
+      var9 = var10003;
+      var10003 = (var9 | var10) & ~(var9 & var10);
+      var10 = 405167292;
+      var9 = var10003;
+      var10003 = (var9 & ~var10 | ~var9 & var10) * (var9 & ~var10 | ~var9 & var10);
+      var10002 = var3.x - 5.0;
+      var10 = 1562175448;
+      var9 = -2103397371;
+      var10004 = var9 + var10 - 2 * (var9 & var10);
+      var10 = -2039249291;
+      var9 = var10004;
+      var10004 = var9 + var10 - 2 * (var9 & var10);
+      var10 = -2029335137;
+      var9 = 1355297706;
+      var10005 = (var9 | var10) & ~(var9 & var10);
+      var10 = 675057003;
+      var9 = var10005;
+      var10 = (var9 | var10) & (~var9 | ~var10);
+      var9 = var10004;
+      var10004 = (var9 & ~var10) + (var10 & ~var9) + 2 * (var9 & var10);
+      double var94 = var4 - 5.0;
+      var10005 = (int)8024280791919200295L;
+      var10 = -427893973;
+      var9 = var10005;
+      var10005 = (var9 | var10) - (var9 & var10);
+      var10 = 1109631148;
+      var9 = var10005;
+      var10005 = var9 & ~var10 | ~var9 & var10;
+      double var100 = var3.z - 5.0;
+      String var113 = "bpj";
+      double var109 = var3.x + 5.0;
+      var10 = -1546255238;
+      var9 = -368415482;
+      int var10007 = (var9 | var10) & (~var9 | ~var10);
+      var10 = 21107704;
+      var9 = var10007;
+      var10007 = (var9 | var10) & (~var9 | ~var10);
+      var10008 = (int)3158443898796155377L;
+      var10 = -511740650;
+      var9 = var10008;
+      var10008 = (var9 | var10) - (var9 & var10);
+      var10 = -1391962549;
+      var9 = var10008;
+      var10 = var9 + var10 - 2 * (var9 & var10);
+      var9 = var10007;
+      var10007 = var9 - ~var10 - 1;
+      double var114 = var4 + 5.0;
+      var10 = 1370426343;
+      var9 = -1656721250;
+      var10008 = (var9 | var10) - (var9 & var10);
+      var10 = 1841451896;
+      var9 = var10008;
+      var10008 = var9 & ~var10 | ~var9 & var10;
+      Box var7 = new Box(var10002, var94, var100, var109, var114, var3.z + 5.0);
+      int var84;
+      if (!this.b(var7)) {
+         var84 = (int)-6666477060719321356L;
+         var10 = -1629087009;
+         var9 = var84;
+         var84 = (var9 | var10) - (var9 & var10);
+         var10 = 1838234580;
+         var9 = var84;
+         var84 = var9 + var10 - 2 * (var9 & var10);
+      } else {
+         String var85 = "bpk";
+         var84 = (int)-6611562697528945789L;
+         var10 = 29612823;
+         var9 = var84;
+         var84 = (var9 | var10) & (~var9 | ~var10);
+         var10 = 1834186644;
+         var9 = var84;
+         var84 = (var9 | var10) & ~(var9 & var10);
+      }
+
+      int var8 = var84;
+      WorldRenderUtils.a(var1, var6, var8);
+   }
+
+   private void a(MatrixStack var1) {
+      BlockPos var2 = c.player.getBlockPos();
+      int var10002 = var2.getX();
+      int var10003 = (int)3575320121080800252L;
+      int var6 = 2037950765;
+      int var5 = var10003;
+      var10003 = var5 + var6 - 2 * (var5 & var6);
+      var6 = 1982548690;
+      var5 = var10003;
+      var6 = (var5 | var6) - (var5 & var6);
+      var5 = var10002;
+      double var67 = var5 - var6;
+      var10003 = var2.getY();
+      var6 = -1029474999;
+      var5 = 460609659;
+      int var10004 = var5 + var6 - 2 * (var5 & var6);
+      var6 = -640209613;
+      var5 = var10004;
+      var6 = (var5 | var6) & ~(var5 & var6);
+      var5 = var10003;
+      double var70 = var5 - var6;
+      var10004 = var2.getZ();
+      int var10005 = (int)5970612661773069556L;
+      var6 = 310709865;
+      var5 = var10005;
+      var10005 = (var5 | var6) - (var5 & var6);
+      var6 = 518775454;
+      var5 = var10005;
+      var6 = (var5 | var6) & (~var5 | ~var6);
+      var5 = var10004;
+      double var72 = 2 * (var5 & ~var6) - (var5 ^ var6);
+      var10005 = var2.getX();
+      var6 = 1777346187;
+      var5 = -1873465389;
+      int var10006 = (var5 | var6) - (var5 & var6);
+      var6 = -106624676;
+      var5 = var10006;
+      var6 = (var5 | var6) - (var5 & var6);
+      var5 = var10005;
+      double var75 = 2 * (var5 | var6) - (var5 ^ var6);
+      var10006 = var2.getY();
+      var6 = 1833304744;
+      var5 = 1304193983;
+      int var10007 = var5 + var6 - 2 * (var5 & var6);
+      var6 = 553281810;
+      var5 = var10007;
+      var6 = (var5 | var6) & ~(var5 & var6);
+      var5 = var10006;
+      double var77 = (var5 & ~var6) + (var6 & ~var5) + 2 * (var5 & var6);
+      var10007 = var2.getZ();
+      int var10008 = (int)-3388398969225080061L;
+      var6 = -223444705;
+      var5 = var10008;
+      var10008 = (var5 | var6) - (var5 & var6);
+      var6 = -123432424;
+      var5 = var10008;
+      var6 = var5 + var6 - 2 * (var5 & var6);
+      var5 = var10007;
+      Box var3 = new Box(var67, var70, var72, var75, var77, var5 - ~var6 - 1);
+      int var60;
+      if (!this.b(var3)) {
+         var60 = (int)-906673506075528351L;
+         var6 = 745240888;
+         var5 = var60;
+         var60 = (var5 | var6) - (var5 & var6);
+         var6 = 747156902;
+         var5 = var60;
+         var60 = (var5 | var6) - (var5 & var6);
+      } else {
+         var60 = (int)-5768030912603839516L;
+         var6 = 1523840331;
+         var5 = var60;
+         var60 = (var5 | var6) & ~(var5 & var6);
+         var6 = 528714529;
+         var5 = var60;
+         var60 = var5 + var6 - 2 * (var5 & var6);
+         var6 = -1359429831;
+         var5 = 1924357977;
+         int var10001 = (var5 | var6) & ~(var5 & var6);
+         var6 = -248915254;
+         var5 = var10001;
+         var6 = (var5 | var6) & (~var5 | ~var6);
+         var5 = var60;
+         var60 = (var5 & ~var6) + (var6 & ~var5) + 2 * (var5 & var6);
+         var60 = (int)6464177281065599042L;
+         var6 = 720343665;
+         var5 = var60;
+         var60 = var5 + var6 - 2 * (var5 & var6);
+         var6 = -553669325;
+         var5 = var60;
+         var60 = (var5 | var6) & ~(var5 & var6);
+      }
+
+      int var4 = var60;
+      WorldRenderUtils.a(var1, var3, var4);
+   }
+
+   private void b(MatrixStack var1) {
+      float var3;
+      BlockPos var5;
+      label59: {
+         BlockPos var2 = c.player.getBlockPos();
+         float var10000 = c.player.getYaw();
+         String var10001 = "bpl";
+         var10000 %= 360.0F;
+         int var21 = 2054978251;
+         int var20 = 1286878959;
+         int var187 = (var20 | var21) & (~var20 | ~var21);
+         var21 = 139329101;
+         var20 = var187;
+         int var188 = (var20 | var21) & (~var20 | ~var21);
+         var10000 += 360.0F;
+         int var189 = (int)2112929539658594086L;
+         var21 = -481239384;
+         var20 = var189;
+         int var190 = var20 + var21 - 2 * (var20 & var21);
+         var21 = 1023747116;
+         var20 = var190;
+         int var191 = (var20 + var21 - 2 * (var20 & var21)) * (var20 + var21 - 2 * (var20 & var21));
+         var3 = var10000 % 360.0F;
+         int var172 = (int)-4035046229416206971L;
+         var21 = 27682840;
+         var20 = var172;
+         int var173 = var20 & ~var21 | ~var20 & var21;
+         var21 = 989361566;
+         var20 = var173;
+         int var4 = (var20 | var21) & ~(var20 & var21);
+         int var192 = (int)5825062348243472929L;
+         var21 = -472368662;
+         var20 = var192;
+         int var193 = (var20 | var21) - (var20 & var21);
+         var21 = 453346622;
+         var20 = var193;
+         int var194 = (var20 | var21) - (var20 & var21);
+         if (!(var3 >= 315.0F)) {
+            int var195 = (int)3928686841698044860L;
+            var21 = -1378131732;
+            var20 = var195;
+            int var196 = (var20 | var21) & ~(var20 & var21);
+            var21 = 832464316;
+            var20 = var196;
+            int var197 = (var20 | var21) - (var20 & var21);
+            int var10002 = (int)5841923216616315283L;
+            var21 = 882290516;
+            var20 = var10002;
+            var10002 = (var20 | var21) & (~var20 | ~var21);
+            var21 = -1117802216;
+            var20 = var10002;
+            var21 = (var20 | var21) & ~(var20 & var21);
+            var20 = var197;
+            int var198 = (var20 & ~var21) + (var21 & ~var20) + 2 * (var20 & var21);
+            if (!(var3 < 45.0F)) {
+               int var202 = (int)-7856843657854409478L;
+               var21 = -1154115100;
+               var20 = var202;
+               int var203 = var20 + var21 - 2 * (var20 & var21);
+               var21 = -1025696322;
+               var20 = var203;
+               int var204 = (var20 | var21) & (~var20 | ~var21);
+               if (var3 >= 45.0F) {
+                  int var205 = (int)8317811188464490757L;
+                  var21 = 2049970339;
+                  var20 = var205;
+                  int var206 = var20 + var21 - 2 * (var20 & var21);
+                  var21 = 69357893;
+                  var20 = var206;
+                  int var207 = var20 & ~var21 | ~var20 & var21;
+                  var21 = 67358964;
+                  var20 = 93934758;
+                  var10002 = (var20 | var21) & (~var20 | ~var21);
+                  var21 = 1811448941;
+                  var20 = var10002;
+                  var21 = (var20 | var21) & (~var20 | ~var21);
+                  var20 = var207;
+                  int var208 = (var20 & ~var21) + (var21 & ~var20) + 2 * (var20 & var21);
+                  if (var3 < 135.0F) {
+                     var20 = var4;
+                     int var214 = ~(var20 - 1);
+                     var10002 = (int)-3612764366304977928L;
+                     var21 = 86648191;
+                     var20 = var10002;
+                     var10002 = (var20 | var21) & (~var20 | ~var21);
+                     var21 = 1008336519;
+                     var20 = var10002;
+                     var10002 = var20 & ~var21 | ~var20 & var21;
+                     int var249 = (int)-3575469997461516495L;
+                     var21 = 1632845795;
+                     var20 = var249;
+                     var249 = (var20 | var21) & ~(var20 & var21);
+                     var21 = 1097756882;
+                     var20 = var249;
+                     var5 = var2.add(var214, var10002, (var20 | var21) - (var20 & var21));
+                     break label59;
+                  }
+               }
+
+               var21 = 268185953;
+               var20 = -1862541459;
+               int var209 = (var20 | var21) & ~(var20 & var21);
+               var21 = -630658982;
+               var20 = var209;
+               int var210 = (var20 + var21 - 2 * (var20 & var21)) * (var20 + var21 - 2 * (var20 & var21));
+               if (var3 >= 135.0F) {
+                  var10001 = "bpm";
+                  if (var3 < 225.0F) {
+                     var21 = -994340120;
+                     var20 = -504551773;
+                     int var212 = var20 + var21 - 2 * (var20 & var21);
+                     var21 = 626439243;
+                     var20 = var212;
+                     int var213 = (var20 | var21) & ~(var20 & var21);
+                     var21 = -1901580286;
+                     var20 = 397513216;
+                     var10002 = (var20 | var21) - (var20 & var21);
+                     var21 = -1726373374;
+                     var20 = var10002;
+                     var10002 = var20 & ~var21 | ~var20 & var21;
+                     var20 = var4;
+                     var5 = var2.add(var213, var10002, ~var20 + 1);
+                     break label59;
+                  }
+               }
+
+               var21 = -644133992;
+               var20 = 843988768;
+               var10002 = (var20 | var21) & ~(var20 & var21);
+               var21 = -338332488;
+               var20 = var10002;
+               var10002 = (var20 | var21) & (~var20 | ~var21);
+               int var10003 = (int)5333938835310010490L;
+               var21 = 1474811714;
+               var20 = var10003;
+               var10003 = (var20 | var21) & ~(var20 & var21);
+               var21 = 1807202104;
+               var20 = var10003;
+               var5 = var2.add(var4, var10002, (var20 | var21) & ~(var20 & var21));
+               break label59;
+            }
+         }
+
+         int var199 = (int)9021231449345463919L;
+         var21 = 1422407218;
+         var20 = var199;
+         int var200 = (var20 | var21) & ~(var20 & var21);
+         var21 = -1306943395;
+         var20 = var200;
+         int var201 = (var20 | var21) & (~var20 | ~var21);
+         int var237 = (int)7326121499098340506L;
+         var21 = 376708365;
+         var20 = var237;
+         var237 = (var20 | var21) & (~var20 | ~var21);
+         var21 = 158318999;
+         var20 = var237;
+         var5 = var2.add(var201, (var20 | var21) - (var20 & var21), var4);
+      }
+
+      double var6;
+      double var8;
+      double var10;
+      double var12;
+      double var14;
+      double var16;
+      label66: {
+         var6 = var5.getY();
+         int var174 = var5.getY();
+         int var215 = (int)3340667717010990565L;
+         int var134 = 2106566476;
+         int var61 = var215;
+         var215 = (var61 | var134) & ~(var61 & var134);
+         var134 = -1266580822;
+         var61 = var215;
+         var134 = var61 & ~var134 | ~var61 & var134;
+         var61 = var174;
+         var8 = (var61 | var134) + (var61 & var134);
+         var134 = 1291968393;
+         var61 = 1301951104;
+         var215 = (var61 | var134) - (var61 & var134);
+         var134 = -562813465;
+         var61 = var215;
+         var215 = (var61 | var134) & (~var61 | ~var134);
+         if (!(var3 >= 315.0F)) {
+            var215 = (int)5561190918245300812L;
+            var134 = -1152588039;
+            var61 = var215;
+            var215 = var61 & ~var134 | ~var61 & var134;
+            var134 = 1880353336;
+            var61 = var215;
+            var215 = (var61 | var134) & ~(var61 & var134);
+            var134 = -1707303581;
+            var61 = -1977933019;
+            int var247 = (var61 | var134) & (~var61 | ~var134);
+            var134 = -1806377283;
+            var61 = var247;
+            var134 = var61 & ~var134 | ~var61 & var134;
+            var61 = var215;
+            var215 = var61 - ~var134 - 1;
+            label42:
+            if (!(var3 < 45.0F)) {
+               String var223 = "bpn";
+               if (var3 >= 135.0F) {
+                  var215 = (int)12768312773984296L;
+                  var134 = 970756255;
+                  var61 = var215;
+                  var215 = (var61 | var134) & ~(var61 & var134);
+                  var134 = 698248667;
+                  var61 = var215;
+                  var215 = (var61 | var134) & ~(var61 & var134);
+                  if (var3 < 225.0F) {
+                     break label42;
+                  }
+               }
+
+               var10 = var5.getX();
+               var174 = var5.getX();
+               var215 = (int)-6134018611230609509L;
+               var134 = 559010081;
+               var61 = var215;
+               var215 = var61 & ~var134 | ~var61 & var134;
+               var134 = -1364771141;
+               var61 = var215;
+               var134 = (var61 | var134) & ~(var61 & var134);
+               var61 = var174;
+               var14 = (var61 & ~var134) + (var134 & ~var61) + 2 * (var61 & var134);
+               var174 = var5.getZ();
+               var134 = 1138711594;
+               var61 = -1000887171;
+               var215 = (var61 | var134) - (var61 & var134);
+               var134 = -2021068714;
+               var61 = var215;
+               var134 = var61 + var134 - 2 * (var61 & var134);
+               var61 = var174;
+               var12 = var61 - var134;
+               var174 = var5.getZ();
+               var215 = (int)6827192800335349705L;
+               var134 = 935658648;
+               var61 = var215;
+               var215 = var61 & ~var134 | ~var61 & var134;
+               var134 = 986891091;
+               var61 = var215;
+               var134 = (var61 | var134) - (var61 & var134);
+               var61 = var174;
+               var16 = (var61 ^ var134) + 2 * (var61 & var134);
+               break label66;
+            }
+         }
+
+         var174 = var5.getX();
+         var134 = -2086397490;
+         var61 = -2020157008;
+         var215 = var61 + var134 - 2 * (var61 & var134);
+         var134 = 70434943;
+         var61 = var215;
+         var134 = (var61 | var134) & ~(var61 & var134);
+         var61 = var174;
+         var10 = (var61 & ~var134) - (~var61 & var134);
+         var174 = var5.getX();
+         var215 = (int)-2986205800074749343L;
+         var134 = -385766849;
+         var61 = var215;
+         var215 = var61 + var134 - 2 * (var61 & var134);
+         var134 = -1789595556;
+         var61 = var215;
+         var134 = var61 & ~var134 | ~var61 & var134;
+         var61 = var174;
+         var14 = (var61 ^ var134) + 2 * (var61 & var134);
+         var12 = var5.getZ();
+         var174 = var5.getZ();
+         var134 = 756635014;
+         var61 = -336054342;
+         var215 = (var61 | var134) & ~(var61 & var134);
+         var134 = -958307779;
+         var61 = var215;
+         var134 = (var61 | var134) - (var61 & var134);
+         var61 = var174;
+         var16 = (var61 & ~var134) + (var134 & ~var61) + 2 * (var61 & var134);
+      }
+
+      Box var18 = new Box(var10, var6, var12, var14, var8, var16);
+      int var183;
+      if (!this.b(var18)) {
+         var183 = (int)1831447587572090475L;
+         int var164 = 880617742;
+         int var91 = var183;
+         var183 = (var91 | var164) - (var91 & var164);
+         var164 = 1786368154;
+         var91 = var183;
+         var183 = (var91 | var164) - (var91 & var164);
+      } else {
+         int var166 = -944967520;
+         int var93 = -1364608512;
+         var183 = (var93 | var166) & ~(var93 & var166);
+         var166 = 969033043;
+         var93 = var183;
+         var183 = var93 & ~var166 | ~var93 & var166;
+         var166 = -1716343803;
+         var93 = -2109499308;
+         var183 = (var93 | var166) & (~var93 | ~var166);
+         var166 = -453915823;
+         var93 = var183;
+         var183 = (var93 | var166) - (var93 & var166);
+      }
+
+      int var19 = var183;
+      WorldRenderUtils.a(var1, var18, var19);
+   }
+
+   private void c(MatrixStack var1, float var2) {
+      Vec3d var3 = this.a(var2);
+      String var10003 = "bpo";
+      double var10002 = var3.x - 30.0;
+      int var9 = 1528849037;
+      int var8 = 759813022;
+      int var10004 = var8 & ~var9 | ~var8 & var9;
+      var9 = -2013154705;
+      var8 = var10004;
+      var10004 = (var8 & ~var9 | ~var8 & var9) * (var8 & ~var9 | ~var8 & var9);
+      double var89 = var3.y - 30.0;
+      int var10005 = (int)-1015802807864944323L;
+      var9 = 685880131;
+      var8 = var10005;
+      var10005 = var8 + var9 - 2 * (var8 & var9);
+      var9 = 1345605088;
+      var8 = var10005;
+      var10005 = (var8 | var9) - (var8 & var9);
+      var9 = -1173343276;
+      var8 = 528742492;
+      int var10006 = (var8 | var9) & ~(var8 & var9);
+      var9 = 111558302;
+      var8 = var10006;
+      var9 = var8 + var9 - 2 * (var8 & var9);
+      var8 = var10005;
+      var10005 = 2 * (var8 | var9) - (var8 ^ var9);
+      double var91 = var3.z - 30.0;
+      var10006 = (int)7043670462075492934L;
+      var9 = -17935910;
+      var8 = var10006;
+      var10006 = (var8 | var9) & ~(var8 & var9);
+      var9 = -219128704;
+      var8 = var10006;
+      var10006 = ((var8 | var9) - (var8 & var9)) * ((var8 | var9) - (var8 & var9));
+      double var95 = var3.x + 30.0;
+      var9 = -1325118317;
+      var8 = -1631873104;
+      int var10007 = (var8 | var9) & ~(var8 & var9);
+      var9 = -881598201;
+      var8 = var10007;
+      var10007 = (var8 | var9) & (~var8 | ~var9);
+      double var99 = var3.y + 30.0;
+      var9 = 1008351435;
+      var8 = 134546965;
+      int var10008 = var8 & ~var9 | ~var8 & var9;
+      var9 = 2044577662;
+      var8 = var10008;
+      var10008 = var8 & ~var9 | ~var8 & var9;
+      int var10009 = (int)1442243338352889222L;
+      var9 = -948554123;
+      var8 = var10009;
+      var10009 = (var8 | var9) & ~(var8 & var9);
+      var9 = 133287223;
+      var8 = var10009;
+      var9 = (var8 | var9) & (~var8 | ~var9);
+      var8 = var10008;
+      var10008 = (var8 | var9) + (var8 & var9);
+      Box var4 = new Box(var10002, var89, var91, var95, var99, var3.z + 30.0);
+      int var76;
+      if (!this.b(var4)) {
+         int var10001 = (int)-8541251849635006135L;
+         var9 = -743636521;
+         var8 = var10001;
+         var10001 = var8 & ~var9 | ~var8 & var9;
+         var9 = -285837167;
+         var8 = var10001;
+         var10001 = (var8 | var9) - (var8 & var9);
+         var76 = (int)3079390547234226177L;
+         var9 = -1968166725;
+         var8 = var76;
+         var76 = var8 & ~var9 | ~var8 & var9;
+         var9 = -1604242457;
+         var8 = var76;
+         int var7 = var8 & ~var9 | ~var8 & var9;
+         a = var7;
+         var10001 = (int)-731154883264038182L;
+         var9 = 255036343;
+         var8 = var10001;
+         var10001 = (var8 | var9) & (~var8 | ~var9);
+         var9 = -462245524;
+         var8 = var10001;
+         var10001 = (var8 | var9) - (var8 & var9);
+         var10001 = (int)482851135761045477L;
+         var9 = -63326983;
+         var8 = var10001;
+         var10001 = (var8 | var9) & (~var8 | ~var9);
+         var9 = 1180164892;
+         var8 = var10001;
+         var10001 = var8 + var9 - 2 * (var8 & var9);
+         var9 = -445028733;
+         var8 = 995705141;
+         var76 = (var8 | var9) & (~var8 | ~var9);
+         var9 = -650718665;
+         var8 = var76;
+         if ((var8 | var9) - (var8 & var9) < a) {
+            throw new IllegalStateException();
+         }
+
+         var76 = (int)4555788919526556257L;
+         var9 = -1812899449;
+         var8 = var76;
+         var76 = (var8 | var9) - (var8 & var9);
+         var9 = 268706841;
+         var8 = var76;
+         var76 = var8 & ~var9 | ~var8 & var9;
+      } else {
+         var9 = 1757037294;
+         var8 = -358939748;
+         var76 = (var8 | var9) - (var8 & var9);
+         var9 = -53667794;
+         var8 = var76;
+         var76 = ((var8 | var9) - (var8 & var9)) * ((var8 | var9) - (var8 & var9));
+         var76 = (int)-927804345308402525L;
+         var9 = 1054382898;
+         var8 = var76;
+         var76 = (var8 | var9) - (var8 & var9);
+         var9 = -653506415;
+         var8 = var76;
+         var76 = var8 & ~var9 | ~var8 & var9;
+      }
+
+      int var5 = var76;
+      WorldRenderUtils.a(var1, var4, var5);
+   }
+
+   private void d(MatrixStack var1, float var2) {
+      Vec3d var3 = this.a(var2);
+      String var10000 = "bpp";
+      double var4 = 7.0;
+      Box var6 = new Box(
+         var3.x - var4, var3.y + 1.0, var3.z - var4, var3.x + var4, var3.y + 1.0, var3.z + var4
+      );
+      double var10002 = var3.x - var4;
+      int var10004 = (int)793957139154945106L;
+      int var10 = -760179057;
+      int var9 = var10004;
+      var10004 = (var9 | var10) & (~var9 | ~var10);
+      var10 = -1161418905;
+      var9 = var10004;
+      var10004 = var9 + var10 - 2 * (var9 & var10);
+      var10 = -168394807;
+      var9 = -1809993655;
+      int var10005 = var9 + var10 - 2 * (var9 & var10);
+      var10 = -681356449;
+      var9 = var10005;
+      var10 = (var9 | var10) & ~(var9 & var10);
+      var9 = var10004;
+      var10004 = (var9 ^ var10) + 2 * (var9 & var10);
+      double var10003 = var3.y - 6.0;
+      double var55 = var3.z - var4;
+      double var56 = var3.x + var4;
+      var10 = 215072024;
+      var9 = -126431904;
+      int var10007 = (var9 | var10) - (var9 & var10);
+      var10 = 274186650;
+      var9 = var10007;
+      var10007 = (var9 | var10) & ~(var9 & var10);
+      Box var7 = new Box(var10002, var10003, var55, var56, var3.y + 8.0, var3.z + var4);
+      int var44;
+      if (!this.b(var7)) {
+         var10 = 32190587;
+         var9 = -1404329392;
+         int var43 = var9 + var10 - 2 * (var9 & var10);
+         var10 = 1381985748;
+         var9 = var43;
+         var44 = var9 & ~var10 | ~var9 & var10;
+      } else {
+         int var10001 = (int)6067090487949947165L;
+         var10 = -1796599678;
+         var9 = var10001;
+         var10001 = (var9 | var10) - (var9 & var10);
+         var10 = -25009780;
+         var9 = var10001;
+         var10001 = var9 & ~var10 | ~var9 & var10;
+         var10 = 726036661;
+         var9 = 1726512599;
+         var10001 = (var9 | var10) - (var9 & var10);
+         var10 = 1303252320;
+         var9 = var10001;
+         var10001 = var9 & ~var10 | ~var9 & var10;
+         var10 = 1827271992;
+         var9 = -812865501;
+         var10001 = (var9 | var10) & (~var9 | ~var10);
+         var10 = -1553638115;
+         var9 = var10001;
+         var10001 = (var9 | var10) & (~var9 | ~var10);
+         var10 = 984250358;
+         var9 = 17320114;
+         int var45 = var9 + var10 - 2 * (var9 & var10);
+         var10 = -995966908;
+         var9 = var45;
+         var44 = var9 + var10 - 2 * (var9 & var10);
+      }
+
+      int var8 = var44;
+      WorldRenderUtils.a(var1, var6, var8);
+   }
+
+   private Vec3d a(float var1) {
+      return new Vec3d(
+         c.player.prevX + (c.player.getX() - c.player.prevX) * var1,
+         c.player.prevY + (c.player.getY() - c.player.prevY) * var1,
+         c.player.prevZ + (c.player.getZ() - c.player.prevZ) * var1
+      );
+   }
+
+   private boolean a(Box var1) {
+      Predicate<Entity> var10000 = var1x -> {
+         int var10x;
+         if (var1x instanceof PlayerEntity && var1.contains(var1x.getPos())) {
+            var10x = (int)-1527170230097693352L;
+            int var8x = -1913689497;
+            int var5x = var10x;
+            var10x = (var5x | var8x) & (~var5x | ~var8x);
+            var8x = -694755522;
+            var5x = var10x;
+            var10x = (var5x | var8x) & ~(var5x & var8x);
+         } else {
+            int var3x = -1832456536;
+            int var2 = 575677841;
+            var10x = (var2 | var3x) - (var2 & var3x);
+            var3x = -1332294855;
+            var2 = var10x;
+            var10x = (var2 | var3x) & ~(var2 & var3x);
+         }
+
+         return pulse.Bool.from(var10x);
+      };
+      int var6 = -995556350;
+      int var5 = 544734367;
+      int var10001 = var5 + var6 - 2 * (var5 & var6);
+      var6 = -455149412;
+      var5 = var10001;
+      EntityTargetType[] var23 = new EntityTargetType[var5 + var6 - 2 * (var5 & var6)];
+      int var10003 = (int)2408718336959280185L;
+      var6 = 2093188552;
+      var5 = var10003;
+      var10003 = (var5 | var6) & ~(var5 & var6);
+      var6 = -1162939919;
+      var5 = var10003;
+      var23[(var5 | var6) & (~var5 | ~var6)] = EntityTargetType.PLAYER;
+
+      for (Entity var3 : EntityFinder.a(var10000, var23)) {
+         if (var3 != c.player) {
+            PlayerEntity var4 = (PlayerEntity)var3;
+            if (!EntityUtils.a(var4) && !FriendLookup.a(var4.getName().getString()) && var4.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA) {
+               var6 = 351313290;
+               var5 = -634847578;
+               int var21 = var5 & ~var6 | ~var5 & var6;
+               var6 = -824679635;
+               var5 = var21;
+               return pulse.Bool.from((var5 | var6) - (var5 & var6));
+            }
+         }
+      }
+
+      var6 = 1931213880;
+      var5 = -1819646547;
+      int var22 = (var5 | var6) - (var5 & var6);
+      var6 = -527328875;
+      var5 = var22;
+      return pulse.Bool.from((var5 | var6) & (var5 & var6 ^ -1));
+   }
+
+   private boolean b(Box var1) {
+      Predicate<Entity> var10000 = var1x -> {
+         int var10x;
+         if (var1x instanceof PlayerEntity && var1.contains(var1x.getPos())) {
+            int var8x = 649552618;
+            int var5x = -1739146011;
+            var10x = var5x & ~var8x | ~var5x & var8x;
+            var8x = -1092493810;
+            var5x = var10x;
+            var10x = (var5x | var8x) - (var5x & var8x);
+         } else {
+            int var3x = -1683324441;
+            int var2 = 1838490208;
+            var10x = (var2 | var3x) & (~var2 | ~var3x);
+            var3x = -163601529;
+            var2 = var10x;
+            var10x = (var2 | var3x) & ~(var2 & var3x);
+         }
+
+         return pulse.Bool.from(var10x);
+      };
+      int var10001 = (int)-1479217466954527661L;
+      int var6 = -1905687618;
+      int var5 = var10001;
+      var10001 = (var5 | var6) & (~var5 | ~var6);
+      var6 = -1627992084;
+      var5 = var10001;
+      EntityTargetType[] var25 = new EntityTargetType[(var5 | var6) & (~var5 | ~var6)];
+      var6 = 860234202;
+      var5 = 1038331870;
+      int var10003 = (var5 | var6) - (var5 & var6);
+      var6 = 245730820;
+      var5 = var10003;
+      var25[(var5 | var6) & (~var5 | ~var6)] = EntityTargetType.PLAYER;
+
+      for (Entity var3 : EntityFinder.a(var10000, var25)) {
+         if (var3 != c.player) {
+            PlayerEntity var4 = (PlayerEntity)var3;
+            if (!EntityUtils.a(var4) && !FriendLookup.a(var4.getName().getString())) {
+               int var21 = (int)-3005380073763817744L;
+               var6 = 272619472;
+               var5 = var21;
+               int var22 = (var5 | var6) - (var5 & var6);
+               var6 = 276488481;
+               var5 = var22;
+               return pulse.Bool.from((var5 | var6) & (var5 & var6 ^ -1));
+            }
+         }
+      }
+
+      var6 = 1679324041;
+      var5 = 1680739254;
+      int var23 = (var5 | var6) - (var5 & var6);
+      var6 = 3569727;
+      var5 = var23;
+      return pulse.Bool.from((var5 | var6) - (var5 & var6));
+   }
+
+   private boolean a(List<BlockPos> var1) {
+      Predicate<Entity> var10000 = var0 -> var0 instanceof PlayerEntity;
+      int var11 = -1025455426;
+      int var10 = -1999819289;
+      int var10001 = (var10 | var11) - (var10 & var11);
+      var11 = 1244522328;
+      var10 = var10001;
+      EntityTargetType[] var42 = new EntityTargetType[var10 & ~var11 | ~var10 & var11];
+      var11 = -768018817;
+      var10 = 597327975;
+      int var10003 = var10 & ~var11 | ~var10 & var11;
+      var11 = -241011176;
+      var10 = var10003;
+      var42[(var10 | var11) & (~var10 | ~var11)] = EntityTargetType.PLAYER;
+
+      for (Entity var3 : EntityFinder.a(var10000, var42)) {
+         if (var3 != c.player) {
+            PlayerEntity var4 = (PlayerEntity)var3;
+            if (!FriendLookup.a(var4.getName().getString())) {
+               BlockPos var5 = var3.getBlockPos();
+
+               for (BlockPos var7 : var1) {
+                  if (var5.equals(var7)) {
+                     int var34 = (int)-6763500188269109125L;
+                     var11 = 1925775833;
+                     var10 = var34;
+                     int var35 = (var10 | var11) & ~(var10 & var11);
+                     var11 = -1121476189;
+                     var10 = var35;
+                     return pulse.Bool.from(var10 + var11 - 2 * (var10 & var11));
+                  }
+               }
+
+               if (b) {
+                  var11 = 1077259549;
+                  var10 = -511592026;
+                  int var36 = var10 + var11 - 2 * (var10 & var11);
+                  var11 = 450235517;
+                  var10 = var36;
+                  int var37 = ((var10 | var11) & (~var10 | ~var11)) * ((var10 | var11) & (~var10 | ~var11));
+                  int var38 = (int)-1778996848933743708L;
+                  var11 = 880320040;
+                  var10 = var38;
+                  int var39 = (var10 | var11) - (var10 & var11);
+                  var11 = 282575884;
+                  var10 = var39;
+                  int var9 = var10 & ~var11 | ~var10 & var11;
+               }
+            }
+         } else if (b) {
+            throw new RuntimeException();
+         }
+      }
+
+      int var40 = (int)2409861857447544879L;
+      var11 = -15500646;
+      var10 = var40;
+      int var41 = (var10 | var11) & (~var10 | ~var11);
+      var11 = -1644170571;
+      var10 = var41;
+      return pulse.Bool.from(var10 + var11 - 2 * (var10 & var11));
+   }
+
+   public static String c(String var0, String var1, int var2, int var3, int var4, int var5) {
+      char[] var6 = var1.toCharArray();
+      char[] var7 = new char[var6.length];
+      int var20 = -61845277;
+      int var19 = 989693868;
+      int var10000 = var19 & ~var20 | ~var19 & var20;
+      var20 = -961685691;
+      var19 = var10000;
+      char[] var280 = new char[(var19 | var20) - (var19 & var20)];
+      int var10002 = (int)5543715841057011633L;
+      var20 = 935018592;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var20 = -1236011055;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      int var10003 = (int)-8752289533118695173L;
+      var20 = -1650969065;
+      var19 = var10003;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = 311379678;
+      var19 = var10003;
+      var280[var10002] = (char)(var19 + var20 - 2 * (var19 & var20));
+      var20 = 1416422808;
+      var19 = -1580688768;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -173768935;
+      var19 = var10002;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var10003 = (int)4381956162099804939L;
+      var20 = -657175393;
+      var19 = var10003;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = 2006881297;
+      var19 = var10003;
+      var280[var10002] = (char)(var19 + var20 - 2 * (var19 & var20));
+      var20 = 1838534610;
+      var19 = 511818314;
+      var10002 = (var19 | var20) & (~var19 | ~var20);
+      var20 = 1930720666;
+      var19 = var10002;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var10003 = (int)-8004755738671162303L;
+      var20 = -822632566;
+      var19 = var10003;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = -599007155;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      var20 = -914031676;
+      var19 = -2130220607;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var20 = 1216582150;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      String var368 = "bpq";
+      var20 = 1055257096;
+      var19 = 1282230360;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = 1921524291;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) - (var19 & var20));
+      var10002 = (int)-5105833483410608258L;
+      var20 = -1460934382;
+      var19 = var10002;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = 65537640;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = 1712963232;
+      var19 = 512825919;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = 1879907028;
+      var19 = var10003;
+      var10003 = ((var19 | var20) & (~var19 | ~var20)) * ((var19 | var20) & (~var19 | ~var20));
+      var20 = 324474029;
+      var19 = -348080023;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = -132694559;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      var10002 = (int)-5907388128336468301L;
+      var20 = -1254569902;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = 1897787108;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = -821046547;
+      var19 = -92729904;
+      var10003 = (var19 | var20) - (var19 & var20);
+      var20 = 896965311;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) & (~var19 | ~var20));
+      var20 = -24192051;
+      var19 = 1172472435;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -1150527048;
+      var19 = var10002;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 1589126329;
+      var19 = 1314686260;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = 283420830;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      var10002 = (int)-967312576483459100L;
+      var20 = -1143480450;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = -2009554787;
+      var19 = var10002;
+      var10002 = (var19 | var20) & (~var19 | ~var20);
+      var20 = -481175789;
+      var19 = 1141155577;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = -1487583800;
+      var19 = var10003;
+      var280[var10002] = (char)(var19 & ~var20 | ~var19 & var20);
+      var20 = -396150401;
+      var19 = 1660034000;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -1970199897;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var10003 = (int)7863459412510622665L;
+      var20 = -1952444911;
+      var19 = var10003;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = -674904693;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      var20 = 778836110;
+      var19 = 897752303;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = 468616296;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var10003 = (int)3785953102162081631L;
+      var20 = -1793187429;
+      var19 = var10003;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = 196514272;
+      var19 = var10003;
+      var280[var10002] = (char)((var19 | var20) - (var19 & var20));
+      char[] var8 = var280;
+      var10000 = (int)2136026638726973613L;
+      var20 = -736417589;
+      var19 = var10000;
+      var10000 = (var19 | var20) - (var19 & var20);
+      var20 = -66264980;
+      var19 = var10000;
+      char[] var283 = new char[(var19 | var20) - (var19 & var20)];
+      var20 = 574196054;
+      var19 = 1029915436;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 526043770;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var10003 = (int)-2052692672342825828L;
+      var20 = 1998891364;
+      var19 = var10003;
+      var10003 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -1462663720;
+      var19 = var10003;
+      var283[var10002] = (char)(var19 + var20 - 2 * (var19 & var20));
+      var20 = -898808740;
+      var19 = 1680879033;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var20 = -1369609756;
+      var19 = var10002;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      String var382 = "bpr";
+      var20 = 1907687648;
+      var19 = 70778979;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = 1972208768;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) - (var19 & var20));
+      var20 = 145859983;
+      var19 = 229659077;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 84014152;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var10003 = (int)3751101441576464252L;
+      var20 = 642339937;
+      var19 = var10003;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = -2033521425;
+      var19 = var10003;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var10003 = (int)-2584537739618102567L;
+      var20 = 569901132;
+      var19 = var10003;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = -1467984442;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) - (var19 & var20));
+      var10002 = (int)627860704726722623L;
+      var20 = 1822482406;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = 1829337050;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var10003 = (int)2646551772988837450L;
+      var20 = -1736725956;
+      var19 = var10003;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = 1557503092;
+      var19 = var10003;
+      var283[var10002] = (char)(var19 + var20 - 2 * (var19 & var20));
+      var20 = -2040143022;
+      var19 = 444369825;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var20 = -1676056329;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var10003 = (int)-9219639903081538515L;
+      var20 = -1674990121;
+      var19 = var10003;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = -2014885446;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      var20 = -1304958512;
+      var19 = -1682905057;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = 696713674;
+      var19 = var10002;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = -1497208372;
+      var19 = -1420904257;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = 227338727;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) & (~var19 | ~var20));
+      var20 = 119043557;
+      var19 = -1226231610;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = -1309588187;
+      var19 = var10002;
+      var10002 = (var19 | var20) - (var19 & var20);
+      var10003 = (int)4752775227445876729L;
+      var20 = 2030441085;
+      var19 = var10003;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = -2036195469;
+      var19 = var10003;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      int var10004 = (int)-3178251700514596561L;
+      var20 = 1816097347;
+      var19 = var10004;
+      var10004 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -2018276161;
+      var19 = var10004;
+      var20 = (var19 | var20) - (var19 & var20);
+      var19 = var10003;
+      var10003 = 2 * (var19 | var20) - (var19 ^ var20);
+      var10003 = (int)1103152351263967931L;
+      var20 = 1807472075;
+      var19 = var10003;
+      var10003 = (var19 | var20) - (var19 & var20);
+      var20 = -1786603447;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) - (var19 & var20));
+      var10002 = (int)-6388894135540701347L;
+      var20 = -1329865579;
+      var19 = var10002;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -1623262257;
+      var19 = var10002;
+      var10002 = (var19 | var20) & ~(var19 & var20);
+      var20 = -349725859;
+      var19 = 1941806446;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = -1734732277;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) & (~var19 | ~var20));
+      var20 = 1610488646;
+      var19 = 1124680537;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 485971991;
+      var19 = var10002;
+      var10002 = var19 & ~var20 | ~var19 & var20;
+      var20 = 928454883;
+      var19 = 2106514059;
+      var10003 = var19 & ~var20 | ~var19 & var20;
+      var20 = 1205629120;
+      var19 = var10003;
+      var10003 = (var19 | var20) & (~var19 | ~var20);
+      var20 = 1274204335;
+      var19 = 1539934226;
+      var10003 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 272358329;
+      var19 = var10003;
+      var283[var10002] = (char)(var19 + var20 - 2 * (var19 & var20));
+      var10002 = (int)4088507577758187156L;
+      var20 = 1246822600;
+      var19 = var10002;
+      var10002 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -1550451115;
+      var19 = var10002;
+      var10002 = (var19 | var20) & (~var19 | ~var20);
+      var20 = 1968227871;
+      var19 = -1493048775;
+      var10003 = (var19 | var20) & ~(var19 & var20);
+      var20 = -766437611;
+      var19 = var10003;
+      var283[var10002] = (char)((var19 | var20) & ~(var19 & var20));
+      char[] var9 = var283;
+      var10000 = (int)8922416202350682687L;
+      var20 = 800843642;
+      var19 = var10000;
+      var10000 = var19 + var20 - 2 * (var19 & var20);
+      var20 = 2029421893;
+      var19 = var10000;
+
+      for (int var10 = (var19 | var20) & ~(var19 & var20); var10 < var6.length; var10++) {
+         char var359 = var6[var10];
+         char var248 = var8[var10 % var8.length];
+         char var120 = var359;
+         var7[var10] = (char)(var120 & ~var248 | ~var120 & var248);
+      }
+
+      char[] var21 = new char[var7.length];
+      var20 = -1146500626;
+      var19 = 1753289127;
+      var10000 = (var19 | var20) - (var19 & var20);
+      var20 = -752297911;
+      var19 = var10000;
+      int var11 = (var19 | var20) & ~(var19 & var20);
+      String var287 = "bps";
+      var10000 = (int)3921513283175111131L;
+      var20 = 856512864;
+      var19 = var10000;
+      var10000 = var19 + var20 - 2 * (var19 & var20);
+      var20 = -850580444;
+      var19 = var10000;
+      int var18 = (var19 | var20) & ~(var19 & var20);
+      a = var18;
+      var10000 = (int)-2160217124749475691L;
+      var20 = -386007253;
+      var19 = var10000;
+      var10000 = (var19 | var20) & ~(var19 & var20);
+      var20 = 726511244;
+      var19 = var10000;
+      var10000 = (var19 | var20) - (var19 & var20);
+      var10000 = (int)7157538875313171468L;
+      var20 = -1280387574;
+      var19 = var10000;
+      var10000 = var19 & ~var20 | ~var19 & var20;
+      var20 = -1677642075;
+      var19 = var10000;
+      if (((var19 | var20) & (~var19 | ~var20)) < a) {
+         var20 = -194934655;
+         var19 = 507050933;
+         int var10001 = var19 & ~var20 | ~var19 & var20;
+         var20 = -363236549;
+         var19 = var10001;
+         var10001 = var19 + var20 - 2 * (var19 & var20);
+         var20 = 1994121679;
+         var19 = -562272720;
+         var10001 = var19 & ~var20 | ~var19 & var20;
+         var20 = -1465415700;
+         var19 = var10001;
+         var10001 = var19 & ~var20 | ~var19 & var20;
+         var10001 = (int)-276805047929430177L;
+         var20 = 248589727;
+         var19 = var10001;
+         var10001 = (var19 | var20) & ~(var19 & var20);
+         var20 = -1997491509;
+         var19 = var10001;
+         var10001 = (var19 | var20) - (var19 & var20);
+         var20 = -926355573;
+         var19 = -769670552;
+         var10001 = (var19 | var20) & ~(var19 & var20);
+         var20 = 450309615;
+         var19 = var10001;
+         var10001 = (var19 | var20) & (~var19 | ~var20);
+         var10001 = (int)5852692502163338434L;
+         var20 = -1647276999;
+         var19 = var10001;
+         var10001 = (var19 | var20) & ~(var19 & var20);
+         var20 = -19318536;
+         var19 = var10001;
+         var10001 = (var19 | var20) - (var19 & var20);
+         var10000 = (int)8594650303407322519L;
+         var20 = 114730853;
+         var19 = var10000;
+         var10000 = (var19 | var20) - (var19 & var20);
+         var20 = -706563805;
+         var19 = var10000;
+         var18 = (var19 | var20) - (var19 & var20);
+      }
+
+      while (var11 < var6.length) {
+         char var360 = var7[var11];
+         char var269 = var9[var11 % var9.length];
+         char var141 = var360;
+         var21[var11] = (char)(var141 + var269 - 2 * (var141 & var269));
+         var11++;
+      }
+
+      String var22 = new String(var21);
+      int var12 = var22.hashCode();
+      var20 = var5;
+      var19 = var3;
+      var10000 = (var19 & ~var20) - (~var19 & var20);
+      var20 = var2;
+      var19 = var10000;
+      int var13 = (var19 & ~var20) - (~var19 & var20);
+      char[] var14 = var0.toCharArray();
+      char[] var15 = new char[var14.length];
+      var10000 = (int)-3439461084384025259L;
+      var20 = -1636032926;
+      var19 = var10000;
+      var10000 = (var19 | var20) & ~(var19 & var20);
+      var20 = 2029959991;
+      var19 = var10000;
+
+      for (int var16 = (var19 | var20) - (var19 & var20); var16 < var15.length; var16++) {
+         int var311 = (int)-3966568516164474803L;
+         var20 = 473874066;
+         var19 = var311;
+         var311 = (var19 | var20) & ~(var19 & var20);
+         var20 = 1425675997;
+         var19 = var311;
+         switch (var16 % (var19 + var20 - 2 * (var19 & var20))) {
+            case 0:
+               var20 = var12;
+               var19 = var13;
+               var10002 = var19 & ~var20 | ~var19 & var20;
+               char var279 = var14[var16];
+               var19 = var10002;
+               var15[var16] = (char)(var19 + var279 - 2 * (var19 & var279));
+               break;
+            case 1:
+               var20 = var13;
+               var19 = var5;
+               var10002 = (var19 | var20) & (~var19 | ~var20);
+               char var277 = var14[var16];
+               var19 = var10002;
+               var15[var16] = (char)((var19 | var277) & ~(var19 & var277));
+         }
+      }
+
+      return new String(var15);
+   }
+}
