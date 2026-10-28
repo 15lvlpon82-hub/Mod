@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "useless",
+	"version": "${version}",
+	"name": "useless",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/useless/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"useless.Useless"
+		],
+		"client": [
+			"useless.client.UselessClient"
+		]
+	},
+	"mixins": [
+		"useless.mixins.json",
+		{
+			"config": "useless.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
