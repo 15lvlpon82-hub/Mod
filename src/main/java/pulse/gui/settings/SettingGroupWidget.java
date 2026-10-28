@@ -1,0 +1,606 @@
+package pulse;
+
+
+import pulse.settings.SettingGroup;
+import java.awt.Color;
+import net.minecraft.client.util.math.MatrixStack;
+
+public class SettingGroupWidget implements SettingWidget {
+   public static final float a = 18.0F;
+   private static final float d = 8.0F;
+   private static final float e = 6.0F;
+   private static final float f = 1.0F;
+   private final String g;
+   private final SettingGroup h;
+   public static int b;
+   public static boolean c;
+
+   public SettingGroupWidget(SettingGroup var1) {
+      this.h = var1;
+      this.g = var1.f();
+   }
+
+   public SettingGroupWidget(String var1) {
+      this.h = null;
+      this.g = var1;
+   }
+
+   @Override
+   public String a() {
+      return this.g;
+   }
+
+   @Override
+   public float b() {
+      int var10001 = (int)5771704537869818932L;
+      int var2 = 1082365790;
+      int var1 = var10001;
+      var10001 = var1 & ~var2 | ~var1 & var2;
+      var2 = -927069317;
+      var1 = var10001;
+      var10001 = var1 + var2 - 2 * (var1 & var2);
+      var10001 = (int)-1333266197695702371L;
+      var2 = -729698123;
+      var1 = var10001;
+      var10001 = var1 + var2 - 2 * (var1 & var2);
+      var2 = -741447127;
+      var1 = var10001;
+      var10001 = (var1 | var2) - (var1 & var2);
+      var2 = -1183842727;
+      var1 = -867939615;
+      var10001 = (var1 | var2) - (var1 & var2);
+      var2 = 1965798583;
+      var1 = var10001;
+      var10001 = var1 & ~var2 | ~var1 & var2;
+      return 18.0F;
+   }
+
+   @Override
+   public void a(MatrixStack var1, Renderer2D var2, float var3, float var4, float var5, int var6, int var7, float var8, float var9) {
+      int var10001 = (int)-2534156888468076724L;
+      int var28 = -1791813570;
+      int var27 = var10001;
+      var10001 = var27 & ~var28 | ~var27 & var28;
+      var28 = 485711714;
+      var27 = var10001;
+      FontRenderer var10 = FontManager.a[(var27 | var28) & (~var27 | ~var28)];
+      String var10000 = "bzu";
+      float var11 = 18.0F * var9;
+      var28 = 113159570;
+      var27 = -565016016;
+      int var61 = (var27 | var28) & (~var27 | ~var28);
+      var28 = -1486813079;
+      var27 = var61;
+      int var62 = ((var27 | var28) - (var27 & var28)) * ((var27 | var28) - (var27 & var28));
+      float var12 = 8.0F * var9;
+      var10000 = "bzv";
+      float var13 = 6.0F * var9;
+      float var14 = 1.0F * var9;
+      var10000 = "bzw";
+      int var15 = (int)(255.0F * var8);
+      float var16 = var10.a(this.g) * var9;
+      float var17 = var3 + var5 / 2.0F;
+      float var18 = var17 - var16 / 2.0F;
+      float var65 = var4 + var11 / 2.0F;
+      float var67 = var10.b(this.g) * var9;
+      var28 = -1529657186;
+      var27 = -987067937;
+      int var10002 = (var27 | var28) - (var27 & var28);
+      var28 = -1804932844;
+      var27 = var10002;
+      var10002 = ((var27 | var28) - (var27 & var28)) * ((var27 | var28) - (var27 & var28));
+      float var19 = var65 - var67 / 4.0F;
+      float var68 = var15;
+      var10002 = (int)-6717031362434574917L;
+      var28 = -257374114;
+      var27 = var10002;
+      var10002 = (var27 | var28) & ~(var27 & var28);
+      var28 = -1676547448;
+      var27 = var10002;
+      var10002 = (var27 | var28) & (~var27 | ~var28);
+      var28 = -45244322;
+      var27 = -19891456;
+      int var10003 = (var27 | var28) - (var27 & var28);
+      var28 = 1802597031;
+      var27 = var10003;
+      var28 = var27 + var28 - 2 * (var27 & var28);
+      var27 = var10002;
+      var10002 = (var27 ^ var28) + 2 * (var27 & var28);
+      Color var20 = pulse.Theme.a(pulse.Theme.b, var68 / 1.5F);
+      var1.push();
+      var1.translate(var18, var19, 0.0F);
+      var1.scale(var9, var9, 1.0F);
+      var1.translate(-var18, -var19, 0.0F);
+      var10.a(this.g, var18, var19, var20, var1);
+      var1.pop();
+      float var21 = var4 + var11 / 2.0F - var14 / 2.0F;
+      var28 = -1632151472;
+      var27 = -1728154562;
+      var10002 = var27 + var28 - 2 * (var27 & var28);
+      var28 = 105458810;
+      var27 = var10002;
+      var10002 = var27 + var28 - 2 * (var27 & var28);
+      var10003 = (int)3294009370459115995L;
+      var28 = -550254194;
+      var27 = var10003;
+      var10003 = (var27 | var28) - (var27 & var28);
+      var28 = 842389569;
+      var27 = var10003;
+      var10003 = (var27 | var28) - (var27 & var28);
+      var28 = 720732795;
+      var27 = -1524476586;
+      int var10004 = (var27 | var28) & ~(var27 & var28);
+      var28 = -1881680079;
+      var27 = var10004;
+      Color var22 = pulse.Theme.a(new Color(var10002, var10003, (var27 | var28) & (~var27 | ~var28)), var15);
+      float var23 = var3 + var12;
+      float var24 = var18 - var13;
+      if (var24 > var23) {
+         var2.a(var23, var21, var24 - var23, var14, var22, var1);
+      }
+
+      float var25 = var18 + var16 + var13;
+      float var26 = var3 + var5 - var12;
+      if (var26 > var25) {
+         var2.a(var25, var21, var26 - var25, var14, var22, var1);
+      }
+   }
+
+   @Override
+   public boolean a(float var1, float var2, float var3, int var4, int var5) {
+      int var10000 = (int)-3083807776115668816L;
+      int var7 = 1445229164;
+      int var6 = var10000;
+      var10000 = (var6 | var7) & ~(var6 & var7);
+      var7 = -1020413220;
+      var6 = var10000;
+      return pulse.Bool.from(var6 + var7 - 2 * (var6 & var7));
+   }
+
+   @Override
+   public boolean d() {
+      int var9;
+      if (this.h != null && !this.h.m()) {
+         int var7 = 1536237500;
+         int var4 = 1052749940;
+         var9 = (var4 | var7) & (~var4 | ~var7);
+         var7 = 1697558472;
+         var4 = var9;
+         var9 = (var4 | var7) & ~(var4 & var7);
+      } else {
+         int var2 = 953029873;
+         int var1 = 1001294558;
+         var9 = (var1 | var2) - (var1 & var2);
+         var2 = 56663598;
+         var1 = var9;
+         var9 = (var1 | var2) - (var1 & var2);
+      }
+
+      return pulse.Bool.from(var9);
+   }
+
+   public static String a(String var0, String var1, int var2, int var3, int var4, int var5) {
+      char[] var6 = var1.toCharArray();
+      char[] var7 = new char[var6.length];
+      int var18 = 1070285747;
+      int var17 = 348180011;
+      int var10000 = (var17 | var18) & ~(var17 & var18);
+      var18 = 722177426;
+      var17 = var10000;
+      char[] var263 = new char[var17 + var18 - 2 * (var17 & var18)];
+      var18 = 1536385229;
+      var17 = 1989480041;
+      int var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 755396260;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = -2141596493;
+      var17 = 2142680479;
+      int var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -1103586;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)-7035135162612191846L;
+      var18 = 397089324;
+      var17 = var10002;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -234293321;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var18 = 1216323283;
+      var17 = -206895342;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -1143686588;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)-4350441402646612380L;
+      var18 = -541970543;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = -727016969;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var10003 = (int)-2376454588507436144L;
+      var18 = 1264690560;
+      var17 = var10003;
+      var10003 = (var17 | var18) & (~var17 | ~var18);
+      var18 = -1068806762;
+      var17 = var10003;
+      var263[var10002] = (char)(var17 + var18 - 2 * (var17 & var18));
+      var18 = -1166986195;
+      var17 = 75513398;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var18 = -1091499496;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var10003 = (int)-5455729561073752219L;
+      var18 = -29412514;
+      var17 = var10003;
+      var10003 = var17 & ~var18 | ~var17 & var18;
+      var18 = -670203338;
+      var17 = var10003;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -1959212951;
+      var17 = 1670749250;
+      int var10004 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -21671452;
+      var17 = var10004;
+      var18 = (var17 | var18) & ~(var17 & var18);
+      var17 = var10003;
+      var10003 = var17 - ~var18 - 1;
+      var10003 = (int)-8961225213714361919L;
+      var18 = -859160061;
+      var17 = var10003;
+      var10003 = var17 & ~var18 | ~var17 & var18;
+      var18 = 1552075729;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var18 = -604680975;
+      var17 = -438954337;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 1042504298;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 362520796;
+      var17 = -324563975;
+      var10004 = (var17 | var18) - (var17 & var18);
+      var18 = -113497311;
+      var17 = var10004;
+      var10004 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -1553976589;
+      var17 = -368300643;
+      var10004 = (var17 | var18) - (var17 & var18);
+      var18 = 1231822716;
+      var17 = var10004;
+      var10004 = var17 + var18 - 2 * (var17 & var18);
+      var10004 = (int)4991817340605129976L;
+      var18 = 640040709;
+      var17 = var10004;
+      var10004 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 1279351805;
+      var17 = var10004;
+      var10004 = var17 & ~var18 | ~var17 & var18;
+      var18 = -435807307;
+      var17 = -1695522049;
+      var10004 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 2096527704;
+      var17 = var10004;
+      var10004 = var17 & ~var18 | ~var17 & var18;
+      var18 = -1230508116;
+      var17 = 1950032026;
+      var10003 = (var17 | var18) & (~var17 | ~var18);
+      var18 = -1029939693;
+      var17 = var10003;
+      var263[var10002] = (char)(var17 & ~var18 | ~var17 & var18);
+      var10002 = (int)6873156330498649368L;
+      var18 = -953527654;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = -1707917433;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = -351497073;
+      var17 = 1179323353;
+      var10003 = (var17 | var18) - (var17 & var18);
+      var18 = -1387799852;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)6362316967509111289L;
+      var18 = -2128204884;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var18 = 770972243;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 230728246;
+      var17 = 167164468;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 70652177;
+      var17 = var10003;
+      var263[var10002] = (char)(var17 + var18 - 2 * (var17 & var18));
+      var10002 = (int)4518348275511202372L;
+      var18 = 123682783;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 973548956;
+      var17 = var10002;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var10003 = (int)8820331619503821277L;
+      var18 = 75280908;
+      var17 = var10003;
+      var10003 = var17 & ~var18 | ~var17 & var18;
+      var18 = 836196339;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & ~(var17 & var18));
+      var10002 = (int)-345842122513074834L;
+      var18 = 985399785;
+      var17 = var10002;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 964801679;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var10003 = (int)-3546448418751454100L;
+      var18 = -1115908808;
+      var17 = var10003;
+      var10003 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 1198422279;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) - (var17 & var18));
+      var10002 = (int)-1760320076721888808L;
+      var18 = -894042719;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var18 = 1253383280;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var10003 = (int)3270812655454248866L;
+      var18 = -981194046;
+      var17 = var10003;
+      var10003 = var17 & ~var18 | ~var17 & var18;
+      var18 = 314044996;
+      var17 = var10003;
+      var263[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      char[] var8 = var263;
+      var10000 = (int)4900748561414650179L;
+      var18 = -1006300353;
+      var17 = var10000;
+      var10000 = var17 & ~var18 | ~var17 & var18;
+      var18 = 883255926;
+      var17 = var10000;
+      char[] var266 = new char[(var17 | var18) & (~var17 | ~var18)];
+      var10002 = (int)-1346529484875207043L;
+      var18 = 917834432;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 1624859837;
+      var17 = var10002;
+      var10002 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 2047065194;
+      var17 = 199201029;
+      var10003 = (var17 | var18) & ~(var17 & var18);
+      var18 = 1910269263;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)3436282697230351805L;
+      var18 = 1207983334;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var18 = 1681662298;
+      var17 = var10002;
+      var10002 = (var17 | var18) & (~var17 | ~var18);
+      String var351 = "bzx";
+      var10003 = (int)2890195023790413168L;
+      var18 = 638632025;
+      var17 = var10003;
+      var10003 = (var17 | var18) - (var17 & var18);
+      var18 = -1968090838;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var18 = -1104864040;
+      var17 = -564899853;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 1618039593;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var18 = 633839300;
+      var17 = -180468827;
+      var10003 = var17 & ~var18 | ~var17 & var18;
+      var18 = -1363283319;
+      var17 = var10003;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 762463778;
+      var17 = 1892424991;
+      var10004 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 1502643624;
+      var17 = var10004;
+      var18 = (var17 | var18) & ~(var17 & var18);
+      var17 = var10003;
+      var10003 = 2 * (var17 | var18) - (var17 ^ var18);
+      var18 = 1690748802;
+      var17 = -1842926109;
+      var10003 = (var17 | var18) & ~(var17 & var18);
+      var18 = -152998606;
+      var17 = var10003;
+      var266[var10002] = (char)(var17 & ~var18 | ~var17 & var18);
+      var10002 = (int)4535712273714494305L;
+      var18 = 102425912;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 406543962;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var18 = 2044579411;
+      var17 = 799943422;
+      var10003 = (var17 | var18) & ~(var17 & var18);
+      var18 = 1450433711;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)5268355557889528574L;
+      var18 = 1705852845;
+      var17 = var10002;
+      var10002 = var17 & ~var18 | ~var17 & var18;
+      var18 = -270996137;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var10003 = (int)-5210359578591475746L;
+      var18 = -1001684886;
+      var17 = var10003;
+      var10003 = (var17 | var18) - (var17 & var18);
+      var18 = 1649147892;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) & ~(var17 & var18));
+      var10002 = (int)7060571829020470443L;
+      var18 = -1556853056;
+      var17 = var10002;
+      var10002 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 550593134;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = -181153093;
+      var17 = -371299169;
+      var10003 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 485328560;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) - (var17 & var18));
+      var10002 = (int)2269979466293848785L;
+      var18 = 1248105400;
+      var17 = var10002;
+      var10002 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 2105850223;
+      var17 = var10002;
+      var10002 = (var17 | var18) & (~var17 | ~var18);
+      var18 = 2116352145;
+      var17 = -708931619;
+      var10004 = (var17 | var18) & ~(var17 & var18);
+      var18 = -1415940284;
+      var17 = var10004;
+      var10004 = var17 & ~var18 | ~var17 & var18;
+      var18 = 2002438698;
+      var17 = 1026328184;
+      var10004 = var17 & ~var18 | ~var17 & var18;
+      var18 = 1249266772;
+      var17 = var10004;
+      var10004 = (var17 | var18) & ~(var17 & var18);
+      var10003 = (int)1360389076450020914L;
+      var18 = -1461546661;
+      var17 = var10003;
+      var10003 = (var17 | var18) & ~(var17 & var18);
+      var18 = -490596272;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) & (~var17 | ~var18));
+      var10002 = (int)5841967570922051145L;
+      var18 = -1254999281;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var18 = 186330433;
+      var17 = var10002;
+      var10002 = (var17 | var18) & ~(var17 & var18);
+      var18 = 176480153;
+      var17 = 1894288754;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 2053915347;
+      var17 = var10003;
+      var266[var10002] = (char)(var17 & ~var18 | ~var17 & var18);
+      var10002 = (int)-2193949046744329844L;
+      var18 = 2072924622;
+      var17 = var10002;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 921763914;
+      var17 = var10002;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      String var365 = "bzy";
+      var10003 = (int)558085011349779452L;
+      var18 = 1269776109;
+      var17 = var10003;
+      var10003 = var17 + var18 - 2 * (var17 & var18);
+      var18 = 743869973;
+      var17 = var10003;
+      var266[var10002] = (char)(var17 & ~var18 | ~var17 & var18);
+      var18 = -2030306087;
+      var17 = 489372386;
+      var10002 = var17 + var18 - 2 * (var17 & var18);
+      var18 = -1680816590;
+      var17 = var10002;
+      var10002 = (var17 | var18) - (var17 & var18);
+      var10003 = (int)-3261901579052460446L;
+      var18 = 1722550807;
+      var17 = var10003;
+      var10003 = (var17 | var18) & (~var17 | ~var18);
+      var18 = -1226379450;
+      var17 = var10003;
+      var266[var10002] = (char)((var17 | var18) - (var17 & var18));
+      char[] var9 = var266;
+      var10000 = (int)-7942048071824705877L;
+      var18 = 353306025;
+      var17 = var10000;
+      var10000 = (var17 | var18) & (~var17 | ~var18);
+      var18 = -1799294206;
+      var17 = var10000;
+
+      for (int var10 = (var17 | var18) & (~var17 | ~var18); var10 < var6.length; var10++) {
+         char var328 = var6[var10];
+         char var249 = var8[var10 % var8.length];
+         char var128 = var328;
+         var7[var10] = (char)((var128 | var249) & (~var128 | ~var249));
+      }
+
+      char[] var19 = new char[var7.length];
+      var10000 = (int)1854738710668831025L;
+      var18 = -590590873;
+      var17 = var10000;
+      var10000 = var17 & ~var18 | ~var17 & var18;
+      var18 = 207136086;
+      var17 = var10000;
+
+      for (int var11 = var17 + var18 - 2 * (var17 & var18); var11 < var6.length; var11++) {
+         char var329 = var7[var11];
+         char var252 = var9[var11 % var9.length];
+         char var131 = var329;
+         var19[var11] = (char)(var131 + var252 - 2 * (var131 & var252));
+      }
+
+      String var20 = new String(var19);
+      int var12 = var20.hashCode();
+      var18 = var5;
+      var17 = var3;
+      var10000 = 2 * (var17 & ~var18) - (var17 ^ var18);
+      var18 = var2;
+      var17 = var10000;
+      int var13 = var17 + ~var18 + 1;
+      char[] var14 = var0.toCharArray();
+      char[] var15 = new char[var14.length];
+      var18 = 824168517;
+      var17 = 1848102134;
+      var10000 = (var17 | var18) - (var17 & var18);
+      var18 = 1597512883;
+      var17 = var10000;
+
+      for (int var16 = var17 + var18 - 2 * (var17 & var18); var16 < var15.length; var16++) {
+         int var10001 = (int)6661472598629635247L;
+         var18 = -1093764437;
+         var17 = var10001;
+         var10001 = (var17 | var18) & ~(var17 & var18);
+         var18 = 1822371334;
+         var17 = var10001;
+         switch (var16 % (var17 & ~var18 | ~var17 & var18)) {
+            case 0:
+               var18 = var12;
+               var17 = var13;
+               var10002 = var17 & ~var18 | ~var17 & var18;
+               char var262 = var14[var16];
+               var17 = var10002;
+               var15[var16] = (char)((var17 | var262) & ~(var17 & var262));
+               break;
+            case 1:
+               var18 = var13;
+               var17 = var5;
+               var10002 = (var17 | var18) - (var17 & var18);
+               char var260 = var14[var16];
+               var17 = var10002;
+               var15[var16] = (char)((var17 | var260) & ~(var17 & var260));
+         }
+      }
+
+      return new String(var15);
+   }
+}
